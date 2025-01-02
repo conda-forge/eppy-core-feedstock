@@ -5,25 +5,28 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/e/eppy/eppy-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/e/eppy/eppy-{{ version }}.tar.gz
   sha256: 40277bf4b3e0978311009d47fcb2ff0faf1a24694ed0640c4d5718a787d26c04
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - munch >=2.0.2
     - decorator >=4.0.10
     - numpy
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - eppy
     - eppy.modeleditor
