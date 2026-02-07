@@ -17,11 +17,11 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
-    - setuptools
+    - hatchling
   run:
     - python >={{ python_min }}
-    - munch >=2.0.2
-    - decorator >=4.0.10
+    - munch >=4.0.0
+    - decorator >=5.2.1
     - numpy
 
 test:
