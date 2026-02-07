@@ -1,4 +1,4 @@
-{% set version = "0.5.63" %}
+{% set version = "0.5.69" %}
 
 package:
   name: eppy-core
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/e/eppy/eppy-{{ version }}.tar.gz
-  sha256: 40277bf4b3e0978311009d47fcb2ff0faf1a24694ed0640c4d5718a787d26c04
+  sha256: b14c1e921c7bf7793a705afd538b567fc811a01357c740a2a82c294f4679efcd
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -17,11 +17,11 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
-    - setuptools
+    - hatchling
   run:
     - python >={{ python_min }}
-    - munch >=2.0.2
-    - decorator >=4.0.10
+    - munch >=4.0.0
+    - decorator >=5.2.1
     - numpy
 
 test:
