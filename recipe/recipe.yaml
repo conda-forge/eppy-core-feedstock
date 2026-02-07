@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: eppy
+  version: 0.5.69
+
+package:
+  name: ${{ name }}-core
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sober-${{ version }}.tar.gz
+  sha256: b14c1e921c7bf7793a705afd538b567fc811a01357c740a2a82c294f4679efcd
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - hatchling
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - decorator >=5.2.1
+    - munch >=4.0.0
+    - numpy
+
+tests:
+  - python:
+      imports:
+        - eppy
+        - eppy.modeleditor
+      pip_check: false
+      python_version: ${{ python_min }}.*
+
+about:
+  homepage: https://github.com/santoshphilip/eppy
+  license: MIT
+  license_file: LICENSE
+  summary: Scripting language for E+ idf files, and E+ output files
+  repository: https://github.com/santoshphilip/eppy
+  documentation: https://eppy.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - airallergy
